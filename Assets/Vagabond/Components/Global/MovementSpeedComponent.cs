@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public class MovementSpeed : MonoBehaviour
+namespace JANUS
 {
-    public float Value;
+    public class MovementSpeed : MonoBehaviour
+    {
+        public float Value;
+    }
 }

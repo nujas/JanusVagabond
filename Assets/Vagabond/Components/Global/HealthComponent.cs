@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public class Health : MonoBehaviour
+namespace JANUS
 {
-    public float Value;
+    public class Health : MonoBehaviour
+    {
+        public float Value;
+    }
 }

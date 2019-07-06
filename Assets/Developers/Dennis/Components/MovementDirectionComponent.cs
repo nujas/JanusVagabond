@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 
-public enum EMovementDirection
+namespace JANUS
 {
-    Left = 0,
-    Right = 1,
-}
+    public enum EMovementDirection
+    {
+        Left = 0,
+        Right = 1,
+    }
 
-public class MovementDirection : MonoBehaviour
-{
-    public EMovementDirection value;
+    public class MovementDirection : MonoBehaviour
+    {
+        public EMovementDirection value;
+    }
 }
