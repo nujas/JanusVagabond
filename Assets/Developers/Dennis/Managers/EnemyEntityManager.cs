@@ -5,11 +5,11 @@ namespace JanusVagabond
     public class EnemyEntityManager : MonoBehaviour
     {
         [SerializeField]
-        private GameObject EnemyEntityGameObject = null;
+        private GameObject EnemyEntityGameObject;
 
         void Start()
         {
-            Instantiate(EnemyEntityGameObject);
+            Instantiate(EnemyEntityGameObject, Vector3.zero, Quaternion.identity);
         }
     }
 }

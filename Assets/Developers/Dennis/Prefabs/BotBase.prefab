@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8018004200132486848}
   - component: {fileID: 8018004200132486851}
-  - component: {fileID: 7709520528198688535}
+  - component: {fileID: 525746387769910386}
+  - component: {fileID: 1725029539950491498}
   m_Layer: 0
-  m_Name: Box
+  m_Name: BotBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ac892882fcb9e25488b9913c8381b90b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e44354c8797869148acf1e8dd41da949, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7709520528198688535
+--- !u!114 &525746387769910386
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,6 +91,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 8018004200132486853}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bf10cdea1344482e91a4f2b58506b77, type: 3}
+  m_Script: {fileID: 11500000, guid: 52228d0469b870b42a15ca62dc3642a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Value: 0
+--- !u!114 &1725029539950491498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8018004200132486853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f593887f1ce49e841b8777c127e5ec0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value: 1

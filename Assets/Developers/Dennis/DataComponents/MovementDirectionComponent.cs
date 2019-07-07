@@ -4,11 +4,11 @@ namespace JanusVagabond
 {
     public enum EMovementDirection
     {
-        Left = 0,
+        Left = -1,
         Right = 1,
     }
 
-    public class MovementDirection : MonoBehaviour
+    public class MovementDirectionComponent : MonoBehaviour
     {
         public EMovementDirection value;
     }

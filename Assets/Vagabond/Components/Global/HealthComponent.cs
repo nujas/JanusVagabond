@@ -2,8 +2,9 @@
 
 namespace JanusVagabond
 {
-    public class Health : MonoBehaviour
+    public class HealthComponent : MonoBehaviour
     {
+        [SerializeField]
         public float Value;
     }
 }
