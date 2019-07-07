@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace JANUS
+namespace JanusVagabond
 {
     public class EnemyEntityManager : MonoBehaviour
     {
