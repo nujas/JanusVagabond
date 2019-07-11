@@ -9,16 +9,14 @@ namespace JanusVagabond
 {
   public class MovementSystem : ComponentSystem
   {
-    float speed = 10f;
-    float wanderLimit = 10f;
     protected override void OnUpdate()
     {
 
       // If has MoveLeft, move it toward the left
-      Entities.WithAllReadOnly<WanderComponent, MoveLeftComponent>().ForEach(
-          (Entity id, ref Translation translation) =>
+      Entities.WithAllReadOnly<WanderComponent, MoveLeftComponent>().ForEach<WanderComponent, Translation>(
+          (Entity id, ref WanderComponent wanderer, ref Translation translation) =>
           {
-            if (translation.Value.x < -wanderLimit)
+            if (translation.Value.x < -wanderer.DistanceLimit)
             {
               PostUpdateCommands.RemoveComponent<MoveLeftComponent>(id);
               PostUpdateCommands.AddComponent(id, new MoveRightComponent());
@@ -27,7 +25,7 @@ namespace JanusVagabond
 
             translation = new Translation()
             {
-              Value = new float3(translation.Value.x - deltaTime * speed, translation.Value.y, translation.Value.z)
+              Value = new float3(translation.Value.x - deltaTime * wanderer.Speed, translation.Value.y, translation.Value.z)
             };
 
             // Components can only be added or removed using PostUpdateCommands.
@@ -35,10 +33,10 @@ namespace JanusVagabond
       );
 
       // If has MoveLeft, move it toward the left
-      Entities.WithAllReadOnly<WanderComponent, MoveRightComponent>().ForEach(
-          (Entity id, ref Translation translation) =>
+      Entities.WithAllReadOnly<WanderComponent, MoveRightComponent>().ForEach<WanderComponent, Translation>(
+          (Entity id, ref WanderComponent wanderer, ref Translation translation) =>
           {
-            if (translation.Value.x > wanderLimit)
+            if (translation.Value.x > wanderer.DistanceLimit)
             {
               PostUpdateCommands.RemoveComponent<MoveRightComponent>(id);
               PostUpdateCommands.AddComponent(id, new MoveLeftComponent());
@@ -48,7 +46,7 @@ namespace JanusVagabond
 
             translation = new Translation()
             {
-              Value = new float3(translation.Value.x + deltaTime * speed, translation.Value.y, translation.Value.z)
+              Value = new float3(translation.Value.x + deltaTime * wanderer.Speed, translation.Value.y, translation.Value.z)
             };
 
             // Components can only be added or removed using PostUpdateCommands.
@@ -56,7 +54,7 @@ namespace JanusVagabond
       );
 
       // If componenent has wandering but no move tag, give it a random one.
-      Entities.WithAllReadOnly<WanderComponent>().WithNone<MoveLeftComponent>().WithNone<MoveRightComponent>().ForEach(
+      Entities.WithAllReadOnly<WanderComponent>().WithNone<MoveLeftComponent, MoveRightComponent>().ForEach(
           (Entity id, ref Translation translation) =>
           {
             // NOTE: Quirky way of do this, just wanna experiment xd

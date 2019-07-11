@@ -20,5 +20,6 @@ public struct WanderComponent : IComponentData
     //   for runtime use here. Authoring Components will be used for 
     //   authoring the data in the Editor.
     
-    
+    public float Speed;
+    public float DistanceLimit;
 }

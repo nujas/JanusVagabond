@@ -17,8 +17,9 @@ public class WanderAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntit
   // For example,
   //    public float scale;
 
+  public float Speed = 10f;
 
-
+  public float DistanceLimit = 10f;
   public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
   {
     // Call methods on 'dstManager' to create runtime components on 'entity' here. Remember that:
@@ -30,7 +31,11 @@ public class WanderAuthoringComponent : MonoBehaviour, IConvertGameObjectToEntit
     //
     // For example,
     //   dstManager.AddComponentData(entity, new Unity.Transforms.Scale { Value = scale });
-    var data = new WanderComponent { };
+    var data = new WanderComponent
+    {
+      Speed = Speed,
+      DistanceLimit = DistanceLimit
+    };
 
     dstManager.AddComponentData(entity, data);
   }
