@@ -149,7 +149,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 30
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -265,11 +265,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 976634216}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e95aeefc533421b4aabe9280c18c32b1, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f7b51b38247ab74fa48d50131ebd209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Prefab: {fileID: 3549255684669618395, guid: cbf0a2ceb54615c4daa55a3654c61ee5, type: 3}
-  Count: 40
+  Count: 1
 --- !u!1 &1248551591
 GameObject:
   m_ObjectHideFlags: 0

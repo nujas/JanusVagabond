@@ -13,13 +13,13 @@ namespace JanusVagabond
     {
 
       // If has MoveLeft, move it toward the left
-      Entities.WithAllReadOnly<WanderComponent, MoveLeftComponent>().ForEach<WanderComponent, Translation>(
+      Entities.WithAllReadOnly<WanderComponent, MoveLeft>().ForEach<WanderComponent, Translation>(
           (Entity id, ref WanderComponent wanderer, ref Translation translation) =>
           {
             if (translation.Value.x < -wanderer.DistanceLimit)
             {
-              PostUpdateCommands.RemoveComponent<MoveLeftComponent>(id);
-              PostUpdateCommands.AddComponent(id, new MoveRightComponent());
+              PostUpdateCommands.RemoveComponent<MoveLeft>(id);
+              PostUpdateCommands.AddComponent(id, new MoveRight());
             }
             var deltaTime = Time.deltaTime;
 
@@ -33,13 +33,13 @@ namespace JanusVagabond
       );
 
       // If has MoveLeft, move it toward the left
-      Entities.WithAllReadOnly<WanderComponent, MoveRightComponent>().ForEach<WanderComponent, Translation>(
+      Entities.WithAllReadOnly<WanderComponent, MoveRight>().ForEach<WanderComponent, Translation>(
           (Entity id, ref WanderComponent wanderer, ref Translation translation) =>
           {
             if (translation.Value.x > wanderer.DistanceLimit)
             {
-              PostUpdateCommands.RemoveComponent<MoveRightComponent>(id);
-              PostUpdateCommands.AddComponent(id, new MoveLeftComponent());
+              PostUpdateCommands.RemoveComponent<MoveRight>(id);
+              PostUpdateCommands.AddComponent(id, new MoveLeft());
             }
 
             var deltaTime = Time.deltaTime;
@@ -54,7 +54,7 @@ namespace JanusVagabond
       );
 
       // If componenent has wandering but no move tag, give it a random one.
-      Entities.WithAllReadOnly<WanderComponent>().WithNone<MoveLeftComponent, MoveRightComponent>().ForEach(
+      Entities.WithAllReadOnly<WanderComponent>().WithNone<MoveLeft, MoveRight>().ForEach(
           (Entity id, ref Translation translation) =>
           {
             // NOTE: Quirky way of do this, just wanna experiment xd
@@ -62,11 +62,11 @@ namespace JanusVagabond
 
             if (random.NextBool())
             {
-              PostUpdateCommands.AddComponent(id, new MoveLeftComponent());
+              PostUpdateCommands.AddComponent(id, new MoveLeft());
             }
             else
             {
-              PostUpdateCommands.AddComponent(id, new MoveRightComponent());
+              PostUpdateCommands.AddComponent(id, new MoveRight());
             }
           }
       );
